@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.tern-project
+data-*.json
+logs.txt
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
