@@ -10,7 +10,7 @@ const errorHandler = require('./middleware/error-handler.js');
 const app = express();
 
 // app.use(requestLogger);
-//app.use(cors());
+app.use(cors());
 app.use(express.static('dist', {
     setHeaders: (res, path, stat) => {
         res.set('Cache-Control', 'public, s-maxage=86400');
