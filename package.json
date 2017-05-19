@@ -4,7 +4,8 @@
   "description": "TimeMap is a calendar that makes your scheduling easy and simple.",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "schema": "node src/model/schema.js"
   },
   "keywords": [],
   "author": "TR",
