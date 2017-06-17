@@ -4,7 +4,7 @@
   "description": "TimeMap is a calendar that makes your scheduling easy and simple.",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node node_modules/babel-cli/bin/babel-node.js src/server.js",
     "schema": "node src/model/schema.js"
   },
   "keywords": [],

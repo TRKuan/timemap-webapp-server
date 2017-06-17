@@ -10,3 +10,9 @@ try {
 } catch (err) {
     console.log(err, '\n\nError configuring the project. Have you set the environment veriables?');
 }
+
+export const google = {
+  clientID: '568090652942-7fs3jhjr48poa55gm3357bveh5umis31.apps.googleusercontent.com',
+  clientSecret: 'Ad7In-4EsX8ak--IVcCtjzMo',
+  callbackURL: 'http://timemap.us-west-2.elasticbeanstalk.com/auth/google/callback',
+};
