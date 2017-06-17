@@ -3,12 +3,11 @@ const express = require('express');
 var cors = require('cors');
 
 //===============================================================
-import express from 'express';
-import passport from 'passport';
-import FacebookStrategy from 'passport-facebook';
-import GoogleStrategy from 'passport-google-oauth20';
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook');
+var GoogleStrategy = require('passport-google-oauth20');
 // Import Facebook and Google OAuth apps configs
-import { facebook, google } from './config';
+var { facebook, google } = require('../config');
 
 // Transform Facebook profile because Facebook and Google profile objects look different
 // and we want to transform them into user objects that have the same set of attributes
