@@ -13,6 +13,11 @@ router.use(bodyParser.json());
 // List
 router.get('/events', function(req, res) {
     const {userId} = req.query;
+    if (userId == "no user") {
+      const err = new Error('you have not log in!');
+      err.status = 400;
+      throw err;
+    }
     eventModel.list(userId).then(events => {
         res.json(events);
     });
@@ -21,6 +26,11 @@ router.get('/events', function(req, res) {
 // Create
 router.post('/events', function(req, res) {
     const {userId, location, lng, lat, startTs, endTs, allDay, title, decription, lable, trans} = req.body;
+    if (userId == "no user") {
+      const err = new Error('you have not log in!');
+      err.status = 400;
+      throw err;
+    }
     if (!startTs || !title || !userId || !endTs) {
       const err = new Error('ts and title and endts and userId are required');
       err.status = 400;
@@ -50,6 +60,11 @@ router.post('/events/:eventId', function(req, res) {
     const {eventId, userId, location, lng, lat, startTs, endTs, allDay, title, decription, lable, trans} = req.body;
     //console.log(moment(startTs).unix());
     //console.log(moment(endTs).unix());
+    if (userId == "no user") {
+      const err = new Error('you have not log in!');
+      err.status = 400;
+      throw err;
+    }
     if (moment(startTs).unix() > moment(endTs).unix()){
       const err = new Error('startTs is more than endTs');
       err.status = 400;
@@ -77,6 +92,11 @@ router.post('/events/:eventId', function(req, res) {
 //getDay
 router.get('/day', function(req, res) {
     const {userId, startTime, endTime} = req.query;
+    if (userId == "no user") {
+      const err = new Error('you have not log in!');
+      err.status = 400;
+      throw err;
+    }
     eventModel.day(userId, startTime, endTime).then(events => {
       //console.log(startTime);
       //console.log(endTime);
@@ -87,6 +107,11 @@ router.get('/day', function(req, res) {
 //getMonth
 router.get('/month', function(req, res) {
     const {userId, year, month, zone} = req.query;
+    if (userId == "no user") {
+      const err = new Error('you have not log in!');
+      err.status = 400;
+      throw err;
+    }
     let startTime = moment({year, month: month-1}).utcOffset(zone).format('YYYY-MM-DD HH:mm:ssZZ');
     let endTime = moment({year, month: month-1}).month(month).utcOffset(zone).format('YYYY-MM-DD HH:mm:ssZZ');
     //console.log(zone);
@@ -147,6 +172,11 @@ router.get('/month', function(req, res) {
 //getNextEvent
 router.get('/nextevent', function(req, res) {
     const {userId} = req.query;
+    if (userId == "no user") {
+      const err = new Error('you have not log in!');
+      err.status = 400;
+      throw err;
+    }
     eventModel.next(userId).then(events => {
         res.json(events);
     });
@@ -155,6 +185,11 @@ router.get('/nextevent', function(req, res) {
 //deleteEvent
 router.get('/deleteevent', function(req, res) {
     const {eventId, userId} = req.query;
+    if (userId == "no user") {
+      const err = new Error('you have not log in!');
+      err.status = 400;
+      throw err;
+    }
     eventModel.del(eventId, userId).then(message => {
         res.json(message);
     });
